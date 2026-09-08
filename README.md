@@ -1,6 +1,6 @@
-# MLX Studio
+# OneTwoSeven
 
-MLX Studio is a local control panel for running Apple MLX language and vision-language models. It browses compatible Hugging Face repositories, starts the official `mlx_lm.server` or `mlx_vlm.server`, shows process and request telemetry, and exposes the active model at an OpenAI-compatible endpoint.
+OneTwoSeven is a local control panel for running Apple MLX language and vision-language models. It browses compatible Hugging Face repositories, starts the official `mlx_lm.server` or `mlx_vlm.server`, shows process and request telemetry, and exposes the active model at an OpenAI-compatible endpoint.
 
 ## Architecture
 
