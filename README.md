@@ -6,7 +6,22 @@ MLX Studio is a local control panel for running Apple MLX language and vision-la
 
 ### Local runtime
 
-![MLX Studio runtime architecture](docs/runtime-architecture.svg)
+<img width="1512" height="859" alt="Screenshot 2026-09-08 at 11 35 58 AM" src="https://github.com/user-attachments/assets/c4376732-a3d8-4497-974f-aadbf1f0515f" />
+
+<img width="1512" height="860" alt="Screenshot 2026-09-08 at 11 36 07 AM" src="https://github.com/user-attachments/assets/22928260-7488-48f0-a1f3-a80a2843484d" />
+
+<img width="1512" height="859" alt="Screenshot 2026-09-08 at 5 35 30 PM" src="https://github.com/user-attachments/assets/3b5cdea8-a7eb-4d0a-a777-2eab63014867" />
+
+<img width="1512" height="859" alt="Screenshot 2026-09-08 at 5 35 37 PM" src="https://github.com/user-attachments/assets/ae56db8f-f966-43f4-9ff3-bd704848aacc" />
+
+<img width="1512" height="859" alt="Screenshot 2026-09-08 at 5 35 44 PM" src="https://github.com/user-attachments/assets/b605d528-c415-4cdc-8b27-95b15fa0ff8e" />
+
+<img width="1512" height="859" alt="Screenshot 2026-09-08 at 5 36 05 PM" src="https://github.com/user-attachments/assets/ea770000-d945-482e-90ef-9dd8358c2dfb" />
+
+<img width="1512" height="859" alt="Screenshot 2026-09-08 at 5 37 48 PM" src="https://github.com/user-attachments/assets/bfb813d1-7794-4921-8e69-67bb3818d9f6" />
+
+<img width="1510" height="913" alt="Screenshot 2026-09-08 at 5 38 43 PM" src="https://github.com/user-attachments/assets/f7127e7c-1965-4441-8e0c-aed0aa91a9c5" />
+
 
 MLX Studio keeps the public API stable while selecting the appropriate MLX backend, downloading target and draft checkpoints, and collecting request, cache, and speculative-decoding telemetry.
 
