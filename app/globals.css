@@ -1,0 +1,84 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --font-heading: var(--font-sans);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+}
+
+:root {
+  color-scheme: dark;
+  --background: oklch(0.105 0.009 255);
+  --foreground: oklch(0.96 0.008 255);
+  --card: oklch(0.15 0.012 255);
+  --card-foreground: oklch(0.96 0.008 255);
+  --popover: oklch(0.15 0.012 255);
+  --popover-foreground: oklch(0.96 0.008 255);
+  --primary: oklch(0.87 0.13 197);
+  --primary-foreground: oklch(0.12 0.02 220);
+  --secondary: oklch(0.2 0.014 255);
+  --secondary-foreground: oklch(0.94 0.008 255);
+  --muted: oklch(0.19 0.012 255);
+  --muted-foreground: oklch(0.65 0.015 255);
+  --accent: oklch(0.22 0.02 240);
+  --accent-foreground: oklch(0.96 0.008 255);
+  --destructive: oklch(0.66 0.2 25);
+  --border: oklch(1 0 0 / 9%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.78 0.13 200);
+  --radius: 0.75rem;
+}
+
+* { border-color: var(--border); }
+html { background: var(--background); font-family: var(--font-geist-sans), sans-serif; }
+body { margin: 0; background: var(--background); color: var(--foreground); }
+button { cursor: pointer; }
+::selection { background: rgba(103, 232, 249, .22); color: white; }
+:focus-visible { outline: 2px solid rgba(103, 232, 249, .7); outline-offset: 2px; }
+
+.studio-grid { display: grid; grid-template-columns: 232px minmax(0, 1fr); }
+.studio-grid > aside { display: flex; min-height: 100vh; flex-direction: column; }
+.nav-item { display: flex; width: 100%; align-items: center; gap: .75rem; border-radius: .75rem; padding: .7rem .75rem; color: #71717a; font-size: .875rem; transition: .18s ease; }
+.nav-item svg { width: 1rem; height: 1rem; }
+.nav-item:hover { color: #d4d4d8; background: rgba(255,255,255,.03); }
+.nav-item-active { color: #ecfeff; background: rgba(34,211,238,.09); box-shadow: inset 2px 0 0 #67e8f9; }
+.hero-panel { position: relative; background: radial-gradient(circle at 78% 20%, rgba(34,211,238,.13), transparent 26%), linear-gradient(118deg, rgba(255,255,255,.045), rgba(255,255,255,.015)); }
+.hero-panel::after { content: ''; position: absolute; inset: 0; opacity: .2; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.045) 1px, transparent 1px); background-size: 32px 32px; mask-image: linear-gradient(90deg, transparent, black); }
+.metric-card { transition: border-color .18s ease, transform .18s ease; }
+.metric-card:hover { border-color: rgba(103,232,249,.2); transform: translateY(-1px); }
+.telemetry-grid { background-image: linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px); background-size: 32px 32px; }
+.code-window { scrollbar-color: rgba(255,255,255,.14) transparent; scrollbar-width: thin; }
+.model-dialog { width: min(920px, calc(100% - 2rem)) !important; max-width: none !important; }
+
+@media (max-width: 767px) {
+  .studio-grid { grid-template-columns: 1fr; }
+  .studio-grid > aside { display: none; }
+  .model-dialog { width: calc(100% - 1rem) !important; max-height: calc(100vh - 1rem); }
+}
