@@ -2,6 +2,20 @@
 
 MLX Studio is a local control panel for running Apple MLX language and vision-language models. It browses compatible Hugging Face repositories, starts the official `mlx_lm.server` or `mlx_vlm.server`, shows process and request telemetry, and exposes the active model at an OpenAI-compatible endpoint.
 
+## Architecture
+
+### Local runtime
+
+![MLX Studio runtime architecture](docs/runtime-architecture.svg)
+
+MLX Studio keeps the public API stable while selecting the appropriate MLX backend, downloading target and draft checkpoints, and collecting request, cache, and speculative-decoding telemetry.
+
+### ANE drafter experiment
+
+![Proposed ANE-backed Qwen3.8 speculative decoding flow](docs/ane-drafter-flow.svg)
+
+The experimental path keeps Qwen3.8 verification and exact rejection handling in MLX while moving draft-block proposal work into a Core ML model constrained to the CPU and Apple Neural Engine. The adapter boundary is designed to remain compatible with the existing MLX LM/VLM speculative-decoding loop.
+
 ## Requirements
 
 - Apple Silicon Mac

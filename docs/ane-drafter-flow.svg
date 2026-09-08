@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="680" viewBox="0 0 1200 680" role="img" aria-labelledby="title desc">
+  <title id="title">Proposed ANE-backed speculative decoding flow</title>
+  <desc id="desc">The MLX target model verifies draft blocks on the GPU while a Core ML adapter runs the Qwen3.8 draft model on the Apple Neural Engine. Correctness remains with target verification.</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#080b10"/>
+      <stop offset="1" stop-color="#121626"/>
+    </linearGradient>
+    <linearGradient id="gpu" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#182d47"/>
+      <stop offset="1" stop-color="#101c30"/>
+    </linearGradient>
+    <linearGradient id="ane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#143a38"/>
+      <stop offset="1" stop-color="#0b2424"/>
+    </linearGradient>
+    <marker id="cyanArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#67e8f9"/>
+    </marker>
+    <marker id="violetArrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#c4b5fd"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="680" rx="28" fill="url(#background)"/>
+  <circle cx="1040" cy="102" r="160" fill="#22d3ee" fill-opacity=".035"/>
+  <circle cx="138" cy="602" r="180" fill="#8b5cf6" fill-opacity=".035"/>
+
+  <text x="64" y="72" fill="#f8fafc" font-family="ui-sans-serif, system-ui, sans-serif" font-size="30" font-weight="700">ANE-backed Qwen3.8 drafting experiment</text>
+  <text x="64" y="108" fill="#94a3b8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="17">A drop-in draft-block adapter keeps authoritative verification on MLX while moving proposal work off the GPU.</text>
+
+  <g transform="translate(64 176)">
+    <rect width="454" height="286" rx="24" fill="url(#gpu)" stroke="#60a5fa" stroke-opacity=".48"/>
+    <rect x="28" y="28" width="74" height="30" rx="15" fill="#60a5fa" fill-opacity=".14"/>
+    <text x="48" y="49" fill="#bfdbfe" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700">GPU</text>
+    <text x="28" y="97" fill="#eff6ff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700">Qwen3.8 target · MLX</text>
+    <text x="28" y="130" fill="#93a4b8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">27B target weights and authoritative sampling</text>
+    <rect x="28" y="160" width="398" height="92" rx="15" fill="#020617" fill-opacity=".38"/>
+    <text x="48" y="190" fill="#dbeafe" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="650">Verify proposed block in one forward pass</text>
+    <text x="48" y="218" fill="#7f93aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">accept prefix · correct rejection · roll back KV</text>
+    <text x="48" y="240" fill="#7f93aa" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">capture target layers 5 · 19 · 33 · 47 · 61</text>
+  </g>
+
+  <g transform="translate(682 176)">
+    <rect width="454" height="286" rx="24" fill="url(#ane)" stroke="#5eead4" stroke-opacity=".48"/>
+    <rect x="28" y="28" width="76" height="30" rx="15" fill="#2dd4bf" fill-opacity=".14"/>
+    <text x="48" y="49" fill="#99f6e4" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700">ANE</text>
+    <text x="28" y="97" fill="#ecfeff" font-family="ui-sans-serif, system-ui, sans-serif" font-size="22" font-weight="700">Qwen3.8 drafter · Core ML</text>
+    <text x="28" y="130" fill="#94aaa7" font-family="ui-sans-serif, system-ui, sans-serif" font-size="14">Fixed-width DFlash2-compatible ML Program</text>
+    <rect x="28" y="160" width="398" height="92" rx="15" fill="#020617" fill-opacity=".38"/>
+    <text x="48" y="190" fill="#ccfbf1" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="650">Propose up to four tokens per round</text>
+    <text x="48" y="218" fill="#819c98" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">stateful draft cache · FP16 first · ANE constrained</text>
+    <text x="48" y="240" fill="#819c98" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">candidate IDs and proposal scores returned to MLX</text>
+  </g>
+
+  <path d="M518 250 C575 220 625 220 672 250" fill="none" stroke="#67e8f9" stroke-width="2.5" marker-end="url(#cyanArrow)"/>
+  <text x="548" y="210" fill="#a5f3fc" font-family="ui-monospace, SFMono-Regular, monospace" font-size="13">FP16 target hidden</text>
+  <path d="M682 370 C625 400 575 400 528 370" fill="none" stroke="#c4b5fd" stroke-width="2.5" marker-end="url(#violetArrow)"/>
+  <text x="554" y="428" fill="#ddd6fe" font-family="ui-monospace, SFMono-Regular, monospace" font-size="13">Int32 candidates</text>
+
+  <g transform="translate(64 510)">
+    <rect width="1072" height="112" rx="19" fill="#ffffff" fill-opacity=".025" stroke="#ffffff" stroke-opacity=".08"/>
+    <text x="28" y="38" fill="#e2e8f0" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700">Experiment gates</text>
+    <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">
+      <text x="28" y="70" fill="#94a3b8">01  Candidate parity</text>
+      <text x="245" y="70" fill="#94a3b8">02  Confirm ANE placement</text>
+      <text x="500" y="70" fill="#94a3b8">03  Measure handoff latency</text>
+      <text x="776" y="70" fill="#94a3b8">04  Compare acceptance + TPS</text>
+    </g>
+    <path d="M28 88 H1044" stroke="#ffffff" stroke-opacity=".08"/>
+    <circle cx="28" cy="88" r="4" fill="#67e8f9"/><circle cx="245" cy="88" r="4" fill="#67e8f9"/><circle cx="500" cy="88" r="4" fill="#67e8f9"/><circle cx="776" cy="88" r="4" fill="#67e8f9"/><circle cx="1044" cy="88" r="4" fill="#5eead4"/>
+  </g>
+</svg>
